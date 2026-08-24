@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://eikdeqqt0lqc"]
+
+[ext_resource type="Script" uid="uid://dhvg3d8muf58l" path="res://addons/godot-rapier2d/fluid_2d_circle.gd" id="1_uxn77"]
+[ext_resource type="Script" uid="uid://busd3yfk5p1mx" path="res://addons/godot-rapier2d/custom_nodes/rapier_static_body_2d.gd" id="2_0ufav"]
+[ext_resource type="Script" uid="uid://qo8bibm1ntwf" path="res://addons/godot-rapier2d/fluid_2d_shader_renderer.gd" id="2_psby6"]
+[ext_resource type="Material" uid="uid://cysnk7s2ll173" path="res://addons/godot-rapier2d/water_shader.tres" id="3_pp4xx"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gfn6u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ufav"]
+size = Vector2(2584.462, 217.54932)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfn6u"]
+size = Vector2(1156.1537, 25.437576)
+
+[node name="Node2D" type="Node2D" unique_id=1976694072]
+metadata/movie_file = "res://movie/liquid_test.avi"
+
+[node name="Fluid2DShaderRenderer" type="CanvasLayer" parent="." unique_id=461227516 node_paths=PackedStringArray("fluid", "camera")]
+scale = Vector2(10, 10)
+transform = Transform2D(10, 0, 0, 10, 0, 0)
+script = ExtResource("2_psby6")
+fluid = NodePath("../Fluid2D")
+camera = NodePath("Camera2D")
+water_material = ExtResource("3_pp4xx")
+metadata/_custom_type_script = "uid://qo8bibm1ntwf"
+
+[node name="Camera2D" type="Camera2D" parent="Fluid2DShaderRenderer" unique_id=1867121083]
+
+[node name="Fluid2D" type="Fluid2D" parent="." unique_id=1916312677]
+density = 4.5
+points = PackedVector2Array(-320, 0, -280, -120, -280, -80, -280, -40, -280, 0, -280, 40, -280, 80, -280, 120, -240, -200, -240, -160, -240, -120, -240, -80, -240, -40, -240, 0, -240, 40, -240, 80, -240, 120, -240, 160, -240, 200, -200, -240, -200, -200, -200, -160, -200, -120, -200, -80, -200, -40, -200, 0, -200, 40, -200, 80, -200, 120, -200, 160, -200, 200, -200, 240, -160, -240, -160, -200, -160, -160, -160, -120, -160, -80, -160, -40, -160, 0, -160, 40, -160, 80, -160, 120, -160, 160, -160, 200, -160, 240, -120, -280, -120, -240, -120, -200, -120, -160, -120, -120, -120, -80, -120, -40, -120, 0, -120, 40, -120, 80, -120, 120, -120, 160, -120, 200, -120, 240, -120, 280, -80, -280, -80, -240, -80, -200, -80, -160, -80, -120, -80, -80, -80, -40, -80, 0, -80, 40, -80, 80, -80, 120, -80, 160, -80, 200, -80, 240, -80, 280, -40, -280, -40, -240, -40, -200, -40, -160, -40, -120, -40, -80, -40, -40, -40, 0, -40, 40, -40, 80, -40, 120, -40, 160, -40, 200, -40, 240, -40, 280, 0, -320, 0, -280, 0, -240, 0, -200, 0, -160, 0, -120, 0, -80, 0, -40, 0, 0, 0, 40, 0, 80, 0, 120, 0, 160, 0, 200, 0, 240, 0, 280, 40, -280, 40, -240, 40, -200, 40, -160, 40, -120, 40, -80, 40, -40, 40, 0, 40, 40, 40, 80, 40, 120, 40, 160, 40, 200, 40, 240, 40, 280, 80, -280, 80, -240, 80, -200, 80, -160, 80, -120, 80, -80, 80, -40, 80, 0, 80, 40, 80, 80, 80, 120, 80, 160, 80, 200, 80, 240, 80, 280, 120, -280, 120, -240, 120, -200, 120, -160, 120, -120, 120, -80, 120, -40, 120, 0, 120, 40, 120, 80, 120, 120, 120, 160, 120, 200, 120, 240, 120, 280, 160, -240, 160, -200, 160, -160, 160, -120, 160, -80, 160, -40, 160, 0, 160, 40, 160, 80, 160, 120, 160, 160, 160, 200, 160, 240, 200, -240, 200, -200, 200, -160, 200, -120, 200, -80, 200, -40, 200, 0, 200, 40, 200, 80, 200, 120, 200, 160, 200, 200, 200, 240, 240, -200, 240, -160, 240, -120, 240, -80, 240, -40, 240, 0, 240, 40, 240, 80, 240, 120, 240, 160, 240, 200, 280, -120, 280, -80, 280, -40, 280, 0, 280, 40, 280, 80, 280, 120)
+position = Vector2(-357, -664)
+script = ExtResource("1_uxn77")
+circle_radius = 8
+
+[node name="RapierStaticBody2D" type="StaticBody2D" parent="." unique_id=460925220]
+position = Vector2(645, -4)
+physics_material_override = SubResource("PhysicsMaterial_gfn6u")
+script = ExtResource("2_0ufav")
+metadata/_custom_type_script = "uid://busd3yfk5p1mx"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RapierStaticBody2D" unique_id=1716199971]
+position = Vector2(59.329712, 173.12842)
+rotation = -0.31424236
+shape = SubResource("RectangleShape2D_0ufav")
+one_way_collision = true
+debug_color = Color(4.764944e-06, 0.6424844, 0.3018448, 0.41960785)
+
+[node name="RapierStaticBody2D2" type="StaticBody2D" parent="." unique_id=652161349]
+position = Vector2(22, 47)
+physics_material_override = SubResource("PhysicsMaterial_gfn6u")
+script = ExtResource("2_0ufav")
+metadata/_custom_type_script = "uid://busd3yfk5p1mx"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RapierStaticBody2D2" unique_id=548465160]
+position = Vector2(-461, -346)
+rotation = 0.522848
+shape = SubResource("RectangleShape2D_gfn6u")
+one_way_collision = true
